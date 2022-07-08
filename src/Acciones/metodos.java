@@ -74,7 +74,7 @@ public class metodos {
         ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();//creo un arraylist 
 
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testParaPracticas\\datos.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testTecnicoParaPracticas\\datos.csv"));
             String line = br.readLine();//lectura del arcivo
 
             while (null != line) {
@@ -202,7 +202,7 @@ public class metodos {
             }
         }//termina dor de lectura del excel
 
-        if (edadDelAlumno >= 18 && edadDelAlumno < 30) {//validio la edad
+        if (edadDelAlumno >= 18 && edadDelAlumno <24) {//validio la edad
             for (int i = 0; i < data_edad.size(); i++) {
                 Alumnos alumnosEnSalon = data_edad.get(i);
                 System.out.println(alumnosEnSalon.toString());
