@@ -19,7 +19,7 @@ public class TestParaPracticas {
     public static void main(String[] args) throws IOException {
 
         mostrarMenu();//mando a llamar el metodo del menu
-
+        
     }//termina el main
 
     public static void mostrarMenu() throws IOException {//se crea el menu principal 

@@ -27,7 +27,8 @@ public class metodos {
         ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();
 
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testParaPracticas\\datos.csv"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testTecnicoParaPracticas\\datos.csv"));
+           //aqui va la ruta del archivo para que lo pueda leer en mi caso yo lo tengo en esta ruta
             String line = br.readLine();
 
             while (null != line) {
