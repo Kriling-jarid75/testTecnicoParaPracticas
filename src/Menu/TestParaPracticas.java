@@ -19,7 +19,7 @@ public class TestParaPracticas {
     public static void main(String[] args) throws IOException {
 
         mostrarMenu();//mando a llamar el metodo del menu
-        
+
     }//termina el main
 
     public static void mostrarMenu() throws IOException {//se crea el menu principal 
@@ -50,8 +50,13 @@ public class TestParaPracticas {
                         System.out.println("Presione ENTER para continuar...");
                         try {
                             seguir = teclado.nextLine();
-                            metodos elExcel = new metodos();
-                            elExcel.leerExcel();
+                            if (seguir.isEmpty()) {
+                                metodos elExcel = new metodos();
+                                elExcel.leerExcel();
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                         } catch (IOException e) {
                         }
                         break;
@@ -60,11 +65,16 @@ public class TestParaPracticas {
                         System.out.println("Presione ENTER para continuar...");
                         try {
                             seguir = teclado.nextLine();
-                            System.out.println("--Ingrese el GRUPO a buscar--\n"
-                                    + "Las opciones son: [A],[B],[C],[D]");
-                            grupoDelAlumno = read.next();
-                            metodos buscarEn = new metodos();
-                            buscarEn.buscarPorGrupo(grupoDelAlumno);
+                            if (seguir.isEmpty()) {
+                                System.out.println("--Ingrese el GRUPO a buscar--\n"
+                                        + "Las opciones son: [A],[B],[C],[D]");
+                                grupoDelAlumno = read.next();
+                                metodos buscarEn = new metodos();
+                                buscarEn.buscarPorGrupo(grupoDelAlumno);
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                         } catch (IOException e) {
                         }
 
@@ -74,8 +84,14 @@ public class TestParaPracticas {
                         System.out.println("Press Enter key to continue...");
                         try {
                             seguir = teclado.nextLine();
-                            metodos mostrarF = new metodos();
-                            mostrarF.mostrarPorGeneroF();
+
+                            if (seguir.isEmpty()) {
+                                metodos mostrarF = new metodos();
+                                mostrarF.mostrarPorGeneroF();
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                         } catch (IOException e) {
                         }
                         break;
@@ -83,8 +99,14 @@ public class TestParaPracticas {
                         System.out.println("Presione ENTER para continuar...");
                         try {
                             seguir = teclado.nextLine();
-                            metodos mostrarM = new metodos();
-                            mostrarM.mostrarPorGeneroM();
+
+                            if (seguir.isEmpty()) {
+                                metodos mostrarM = new metodos();
+                                mostrarM.mostrarPorGeneroM();
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                         } catch (IOException e) {
                         }
                         break;
@@ -93,10 +115,16 @@ public class TestParaPracticas {
                         System.out.println("Presione ENTER para continuar...");
                         try {
                             seguir = teclado.nextLine();
-                            System.out.println("--Ingrese la EDAD a buscar--");
-                            edadDelAlumno = read.nextInt();
-                            metodos buscarEdadEn = new metodos();
-                            buscarEdadEn.mostrarPorEdad(edadDelAlumno);
+
+                            if (seguir.isEmpty()) {
+                                System.out.println("--Ingrese la EDAD a buscar--");
+                                edadDelAlumno = read.nextInt();
+                                metodos buscarEdadEn = new metodos();
+                                buscarEdadEn.mostrarPorEdad(edadDelAlumno);
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                         } catch (IOException e) {
                         }
 
@@ -106,10 +134,17 @@ public class TestParaPracticas {
                         System.out.println("Presione ENTER para continuar...");
                         try {
                             seguir = teclado.nextLine();
-                            System.out.println("--Ingrese el APELLIDO a buscar--");
-                            apellidoDelAlumno = read.next();
-                            metodos buscarApellidoEn = new metodos();
-                            buscarApellidoEn.mostrarPorApellido(apellidoDelAlumno);
+
+                            if (seguir.isEmpty()) {
+                                System.out.println("--Ingrese el APELLIDO a buscar--");
+                                apellidoDelAlumno = read.next();
+                                metodos buscarApellidoEn = new metodos();
+                                buscarApellidoEn.mostrarPorApellido(apellidoDelAlumno);
+
+                            } else {
+                                System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
+                            }
+
                             break;
                         } catch (IOException e) {
                         }//termina el try
