@@ -4,13 +4,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ArryList_Objetos;
+package modelo;
 
 /**
  *
  * @author Garci
  */
-public class Alumnos implements Comparable<Alumnos> { //se crean los getters and setters
+public class ModeloAlumnos implements Comparable<ModeloAlumnos> { //se crean los getters and setters
 
     private String nombre;
     private String apellido;
@@ -18,10 +18,10 @@ public class Alumnos implements Comparable<Alumnos> { //se crean los getters and
     private String genero;
     private String grupo;
 
-    public Alumnos() {
+    public ModeloAlumnos() {
     }//termina el constructor vacio
 
-    public Alumnos(String nombre, String apellido, int edad, String genero, String grupo) {
+    public ModeloAlumnos(String nombre, String apellido, int edad, String genero, String grupo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -76,7 +76,7 @@ public class Alumnos implements Comparable<Alumnos> { //se crean los getters and
     }//termina el toString
 
     @Override
-    public int compareTo(Alumnos o) { //metodo para comprar los apellido y acomodarlos alfabeticamente
+    public int compareTo(ModeloAlumnos o) { //metodo para comprar los apellido y acomodarlos alfabeticamente
         return this.getApellido().compareTo(o.getApellido());
     }//termina el comparteTo 
 

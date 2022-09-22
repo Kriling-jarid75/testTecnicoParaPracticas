@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Menu;
+package menuPrincipal;
 
-import Acciones.metodos;
+import controlador.ControladorAlumnos;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -39,7 +39,7 @@ public class TestParaPracticas {
                     + "3.- Mostrar Por Género Femenino\n"
                     + "4.- Mostrar Por Género Masculino\n"
                     + "5.- Mostrar Por Edad\n"
-                    + "6.- Mostrar Por Apellido\n"
+                    + "6.- Mostrar Por Apellido \n"
                     + "7.- Salir del programa");
             try {
                 System.out.println("<>Seleccione una opción<>");
@@ -51,7 +51,7 @@ public class TestParaPracticas {
                         try {
                             seguir = teclado.nextLine();
                             if (seguir.isEmpty()) {
-                                metodos elExcel = new metodos();
+                                ControladorAlumnos elExcel = new ControladorAlumnos();
                                 elExcel.leerExcel();
                             } else {
                                 System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
@@ -69,13 +69,14 @@ public class TestParaPracticas {
                                 System.out.println("--Ingrese el GRUPO a buscar--\n"
                                         + "Las opciones son: [A],[B],[C],[D]");
                                 grupoDelAlumno = read.next();
-                                metodos buscarEn = new metodos();
+                                ControladorAlumnos buscarEn = new ControladorAlumnos();
                                 buscarEn.buscarPorGrupo(grupoDelAlumno);
                             } else {
                                 System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
                             }
 
                         } catch (IOException e) {
+                            
                         }
 
                         break;
@@ -86,7 +87,7 @@ public class TestParaPracticas {
                             seguir = teclado.nextLine();
 
                             if (seguir.isEmpty()) {
-                                metodos mostrarF = new metodos();
+                                ControladorAlumnos mostrarF = new ControladorAlumnos();
                                 mostrarF.mostrarPorGeneroF();
                             } else {
                                 System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
@@ -101,7 +102,7 @@ public class TestParaPracticas {
                             seguir = teclado.nextLine();
 
                             if (seguir.isEmpty()) {
-                                metodos mostrarM = new metodos();
+                                ControladorAlumnos mostrarM = new ControladorAlumnos();
                                 mostrarM.mostrarPorGeneroM();
                             } else {
                                 System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
@@ -119,7 +120,7 @@ public class TestParaPracticas {
                             if (seguir.isEmpty()) {
                                 System.out.println("--Ingrese la EDAD a buscar--");
                                 edadDelAlumno = read.nextInt();
-                                metodos buscarEdadEn = new metodos();
+                                ControladorAlumnos buscarEdadEn = new ControladorAlumnos();
                                 buscarEdadEn.mostrarPorEdad(edadDelAlumno);
                             } else {
                                 System.err.println("No presionaste ENTER, Inténtalo de nuevo!!");
@@ -138,7 +139,7 @@ public class TestParaPracticas {
                             if (seguir.isEmpty()) {
                                 System.out.println("--Ingrese el APELLIDO a buscar--");
                                 apellidoDelAlumno = read.next();
-                                metodos buscarApellidoEn = new metodos();
+                                ControladorAlumnos buscarApellidoEn = new ControladorAlumnos();
                                 buscarApellidoEn.mostrarPorApellido(apellidoDelAlumno);
 
                             } else {

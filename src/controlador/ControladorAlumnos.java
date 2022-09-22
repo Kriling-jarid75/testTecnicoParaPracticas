@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acciones;
+package controlador;
 
-import ArryList_Objetos.Alumnos;
+import modelo.ModeloAlumnos;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,13 +18,13 @@ import java.util.Iterator;
  *
  * @author Garci
  */
-public class metodos {
+public class ControladorAlumnos {
 
     public void leerExcel() throws IOException {
 
         String SEPARATOR = ",";
         BufferedReader br = null;
-        ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();
+        ArrayList<ModeloAlumnos> alumnos = new ArrayList<ModeloAlumnos>();
 
         try {
             br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testTecnicoParaPracticas\\datos.csv"));
@@ -34,7 +34,7 @@ public class metodos {
             while (null != line) {
 
                 String[] cortarString = line.split(SEPARATOR);
-                Alumnos students = new Alumnos();
+                ModeloAlumnos students = new ModeloAlumnos();
                 // Pongo los atributos al objeto "students"
                 students.setNombre(cortarString[0]);
                 students.setApellido(cortarString[1]);
@@ -46,9 +46,9 @@ public class metodos {
                 line = br.readLine();
             }//termina while
 
-            Iterator<Alumnos> itralumnos = alumnos.iterator();
+            Iterator<ModeloAlumnos> itralumnos = alumnos.iterator();
             while (itralumnos.hasNext()) {
-                Alumnos alumnosEnSalon = itralumnos.next();
+                ModeloAlumnos alumnosEnSalon = itralumnos.next();
 
                 System.out.println(alumnosEnSalon.toString());
             }//termina while
@@ -68,10 +68,10 @@ public class metodos {
 
     }//termina el metodo leerExcel
 
-    public ArrayList<Alumnos> dataExcel() throws IOException { //leeo el archivo de excel y regreso el dataExcel para usarlo
+    public ArrayList<ModeloAlumnos> dataExcel() throws IOException { //leeo el archivo de excel y regreso el dataExcel para usarlo
         String SEPARATOR = ",";
         BufferedReader br = null;
-        ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();//creo un arraylist 
+        ArrayList<ModeloAlumnos> alumnos = new ArrayList<ModeloAlumnos>();//creo un arraylist 
 
         try {
             br = new BufferedReader(new FileReader("C:\\Users\\Garci\\Documents\\NetBeansProjects\\testTecnicoParaPracticas\\datos.csv"));
@@ -80,7 +80,7 @@ public class metodos {
             while (null != line) {
 
                 String[] cortarString = line.split(SEPARATOR);
-                Alumnos students = new Alumnos();
+                ModeloAlumnos students = new ModeloAlumnos();
                 // Pongo los atributos al objeto "students"
                 students.setNombre(cortarString[0]);
                 students.setApellido(cortarString[1]);
@@ -109,17 +109,17 @@ public class metodos {
 
     public void buscarPorGrupo(String grupoDelAlumno) throws IOException {//metodo para buscar un grupo solicitando un dato
        
-        ArrayList<Alumnos> data_grupo = new ArrayList<Alumnos>();
+        ArrayList<ModeloAlumnos> data_grupo = new ArrayList<ModeloAlumnos>();
         int num_alum = 0;//varibla contador por grupoo
         int num_m = 0;//contador para generoM
         int num_f = 0;//contador para generoF
 
-        ArrayList<Alumnos> data_excel = dataExcel();//OBTENGO VALORES DEL EXCEL
+        ArrayList<ModeloAlumnos> data_excel = dataExcel();//OBTENGO VALORES DEL EXCEL
         Collections.sort(data_excel);
         for (int i = 0; i < data_excel.size(); i++) {//RECORRER EL EXCEL
-            Alumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
+            ModeloAlumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
             if (alumnosEnSalon.getGrupo().equals(grupoDelAlumno.toUpperCase())) {
-                Alumnos alumnos_grupo = new Alumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
+                ModeloAlumnos alumnos_grupo = new ModeloAlumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
                 data_grupo.add(alumnos_grupo);
                 if (alumnosEnSalon.getGenero().equals("M")) {
                     num_m++;
@@ -141,7 +141,7 @@ public class metodos {
             System.out.println("Total de alumnos que son Hombres: " + num_m + " " + df.format(por_h) + "%");//porcentajes
 
             for (int i = 0; i < data_grupo.size(); i++) {
-                Alumnos alumnosEnSalon = data_grupo.get(i);
+                ModeloAlumnos alumnosEnSalon = data_grupo.get(i);
                 System.out.println(alumnosEnSalon.toString());
             }//termina for de impresion
         } else {
@@ -153,58 +153,58 @@ public class metodos {
 
     public void mostrarPorGeneroF() throws IOException {//metodo para mostrar por genero F
 
-        ArrayList<Alumnos> data_genero = new ArrayList<Alumnos>();
+        ArrayList<ModeloAlumnos> data_genero = new ArrayList<ModeloAlumnos>();
         Collections.sort(data_genero);
-        ArrayList<Alumnos> data_excel = dataExcel();
+        ArrayList<ModeloAlumnos> data_excel = dataExcel();
 
         for (int i = 0; i < data_excel.size(); i++) {
-            Alumnos alumnosEnSalon = data_excel.get(i);
+            ModeloAlumnos alumnosEnSalon = data_excel.get(i);
             if (alumnosEnSalon.getGenero().equals("F")) {//valido lio que tengo en el arraylist con el genero de M
-                Alumnos alumnos_grupo = new Alumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
+                ModeloAlumnos alumnos_grupo = new ModeloAlumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
                 data_genero.add(alumnos_grupo);
             }//tertmina if de validadacion 
         }//termina for de lectura de excel
         
         for (int i = 0; i < data_genero.size(); i++) {
-            Alumnos alumnosEnSalon = data_genero.get(i);
+            ModeloAlumnos alumnosEnSalon = data_genero.get(i);
             System.out.println(alumnosEnSalon.toString());
         }//termina for de impresion
     }//termina metodo mostrarPorGeneroF
 
     public void mostrarPorGeneroM() throws IOException {//metodo para mostrar por generoM
        
-        ArrayList<Alumnos> data_genero = new ArrayList<Alumnos>();//lectura de excel mediante arraylist
-        ArrayList<Alumnos> data_excel = dataExcel();//creacion de objetios
+        ArrayList<ModeloAlumnos> data_genero = new ArrayList<ModeloAlumnos>();//lectura de excel mediante arraylist
+        ArrayList<ModeloAlumnos> data_excel = dataExcel();//creacion de objetios
 
         for (int i = 0; i < data_excel.size(); i++) {
-            Alumnos alumnosEnSalon = data_excel.get(i);
+            ModeloAlumnos alumnosEnSalon = data_excel.get(i);
             if (alumnosEnSalon.getGenero().equals("M")) {//cse compara lo que tiene el arraylist con lo genero
-                Alumnos alumnos_grupo = new Alumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
+                ModeloAlumnos alumnos_grupo = new ModeloAlumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
                 data_genero.add(alumnos_grupo);
             }
         }//termina for 
 
         for (int i = 0; i < data_genero.size(); i++) {
-            Alumnos alumnosEnSalon = data_genero.get(i);
+            ModeloAlumnos alumnosEnSalon = data_genero.get(i);
             System.out.println(alumnosEnSalon.toString());//imprimo mis valores
         }//termina for de impresion
     }//termina metodo mostrarPorGenero
 
     public void mostrarPorEdad(int edadDelAlumno) throws IOException {//metodo por mostrar edad por paso de parametros
 
-        ArrayList<Alumnos> data_edad = new ArrayList<Alumnos>();//se lee el arryalist del excel 
-        ArrayList<Alumnos> data_excel = dataExcel();//aqui creo otro objeto y mediante otro arraylist
+        ArrayList<ModeloAlumnos> data_edad = new ArrayList<ModeloAlumnos>();//se lee el arryalist del excel 
+        ArrayList<ModeloAlumnos> data_excel = dataExcel();//aqui creo otro objeto y mediante otro arraylist
         for (int i = 0; i < data_excel.size(); i++) {//RECORRER EL EXCEL
-            Alumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
+            ModeloAlumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
             if (alumnosEnSalon.getEdad() >= edadDelAlumno) {
-                Alumnos alumnos_grupo = new Alumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
+                ModeloAlumnos alumnos_grupo = new ModeloAlumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
                 data_edad.add(alumnos_grupo);
             }
         }//termina dor de lectura del excel
 
         if (edadDelAlumno >= 18 && edadDelAlumno <24) {//validio la edad
             for (int i = 0; i < data_edad.size(); i++) {
-                Alumnos alumnosEnSalon = data_edad.get(i);
+                ModeloAlumnos alumnosEnSalon = data_edad.get(i);
                 System.out.println(alumnosEnSalon.toString());
             }//termina el for de impresion
         } else {
@@ -214,13 +214,13 @@ public class metodos {
 
     public void mostrarPorApellido(String apellidoDelAlumno) throws IOException {//metodo para mostrar los apellidos
 
-        ArrayList<Alumnos> data_apellidos = new ArrayList<Alumnos>();//leeo el arraylist mediante la clase alumnos con getters and setters
+        ArrayList<ModeloAlumnos> data_apellidos = new ArrayList<ModeloAlumnos>();//leeo el arraylist mediante la clase alumnos con getters and setters
         int num_alum = 0;
-        ArrayList<Alumnos> data_excel = dataExcel();//OBTENGO VALORES DEL EXCEL
+        ArrayList<ModeloAlumnos> data_excel = dataExcel();//OBTENGO VALORES DEL EXCEL
         for (int i = 0; i < data_excel.size(); i++) {//RECORRER EL EXCEL
-            Alumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
+            ModeloAlumnos alumnosEnSalon = data_excel.get(i);//LO ASIGNO A UNA VARIBLE 
             if (alumnosEnSalon.getApellido().equals(apellidoDelAlumno.toUpperCase())) {//comparamos el dato ingresado con el que leer del array
-                Alumnos alumnos_grupo = new Alumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
+                ModeloAlumnos alumnos_grupo = new ModeloAlumnos(alumnosEnSalon.getNombre(), alumnosEnSalon.getApellido(), alumnosEnSalon.getEdad(), alumnosEnSalon.getGenero(), alumnosEnSalon.getGrupo());
                 data_apellidos.add(alumnos_grupo);
                 num_alum++;
             }
@@ -231,11 +231,11 @@ public class metodos {
             System.out.println("Total de alumnos que hay con el mismo apellido: (" + num_alum + ")");
 
             for (int i = 0; i < data_apellidos.size(); i++) {
-                Alumnos alumnosEnSalon = data_apellidos.get(i);
+                ModeloAlumnos alumnosEnSalon = data_apellidos.get(i);
                 System.out.println(alumnosEnSalon.toString());
             }//termina el for de impresion de los datos del array con respecto al if
         } else {
             System.err.println("No se encontraron datos!!");
         }//termina else
     }//terina metodo mostrarPorApellido
-}//termina la clase metodos 
+}//termina la clase ControladorAlumnos 
