@@ -43,6 +43,7 @@ public class AlumnosTest {
     /**
      * Test of buscarPorGrupo method, of class ControladorAlumnos. Testing del
      * metodo buscarPorGrupo de la clase ControladorAlumnos
+     * Testing en general
      */
     @Test
     public void testBuscarPorGrupo() throws Exception {
